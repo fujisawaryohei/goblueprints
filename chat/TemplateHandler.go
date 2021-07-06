@@ -1,7 +1,6 @@
 package chat
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 	"path/filepath"
@@ -18,6 +17,5 @@ func (t *TemplateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	t.once.Do(func() {
 		t.templ = template.Must(template.ParseFiles(filepath.Join("template", t.Filename)))
 	})
-	fmt.Println(t.templ)
 	t.templ.Execute(w, nil)
 }
